@@ -1,7 +1,7 @@
 import React from 'react';
 import { create } from 'zustand'
 
-const useBearStore = create((set) => ({
+const useCarrotsStore = create((set) => ({
     orangeCarrots: 0,
     violetCarrots: 0,
     increaseOrange: () => set((state) => ({ orangeCarrots: state.orangeCarrots + 1 })),
@@ -12,10 +12,10 @@ const Layout = () => {
     function Counter(color) {
         switch (color) {
             case "orange":
-                const orange = useBearStore((state) => state.orangeCarrots)
+                const orange = useCarrotsStore((state) => state.orangeCarrots)
                 return <>{orange}</>;
             case "violet":
-                const violet = useBearStore((state) => state.violetCarrots)
+                const violet = useCarrotsStore((state) => state.violetCarrots)
                 return <>{violet}</>;
             default: return (
                 <div></div>
@@ -28,10 +28,10 @@ const Layout = () => {
     function Controls(color) {
         switch (color) {
             case "orange":
-                const increaseOrange = useBearStore((state) => state.increaseOrange)
+                const increaseOrange = useCarrotsStore((state) => state.increaseOrange)
                 return <button onClick={increaseOrange}>+</button>;
             case "violet":
-                const increaseViolet = useBearStore((state) => state.increaseViolet)
+                const increaseViolet = useCarrotsStore((state) => state.increaseViolet)
                 return <button onClick={increaseViolet}>+</button>;
             default: return (
                 <div></div>
