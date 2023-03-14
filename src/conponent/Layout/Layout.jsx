@@ -1,5 +1,6 @@
 import React from 'react';
 import { create } from 'zustand'
+import styles from "./layout.module.scss"
 
 const useCarrotsStore = create((set) => ({
     orangeCarrots: 0,
@@ -9,6 +10,8 @@ const useCarrotsStore = create((set) => ({
 
 }))
 const Layout = () => {
+
+    const { left, raight, main } = styles;
     function Counter(color) {
         switch (color) {
             case "orange":
@@ -40,9 +43,10 @@ const Layout = () => {
     }
 
         return (
-            <div>
+            <div >
                 <h1>Carrots</h1>
-                <div>
+                <div className={main}>
+                <div className={left}>
                     <h4>BUY</h4>
                     <div>
                         <p>orange
@@ -53,7 +57,7 @@ const Layout = () => {
                          {Controls("violet")}</p>
                     </div>
                 </div>
-                <div>
+                <div className={raight}>
                     <h4>OWNED</h4>
                     <div>
                         <p>orange
@@ -62,6 +66,7 @@ const Layout = () => {
                     <div>
                         <p>violet
                             <span>{Counter("violet")}</span></p>
+                    </div>
                     </div>
                 </div>
             </div>
