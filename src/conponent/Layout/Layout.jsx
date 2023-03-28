@@ -11,7 +11,7 @@ const useCarrotsStore = create((set) => ({
 }))
 const Layout = () => {
 
-    const { left, raight, main } = styles;
+    const { left, raight, main, butt } = styles;
     function Counter(color) {
         switch (color) {
             case "orange":
@@ -32,10 +32,10 @@ const Layout = () => {
         switch (color) {
             case "orange":
                 const increaseOrange = useCarrotsStore((state) => state.increaseOrange)
-                return <button onClick={increaseOrange}>+</button>;
+                return <button className={butt} onClick={increaseOrange}>+</button>;
             case "violet":
                 const increaseViolet = useCarrotsStore((state) => state.increaseViolet)
-                return <button onClick={increaseViolet}>+</button>;
+                return <button className={butt} onClick={increaseViolet}>+</button>;
             default: return (
                 <div></div>
             );
@@ -49,12 +49,12 @@ const Layout = () => {
                 <div className={left}>
                     <h4>BUY</h4>
                     <div>
-                        <p>orange
-                         {Controls("orange")}</p>
+                    <p>orange <span>
+                                {Controls("orange")}</span></p>
                     </div>
                     <div>
                         <p>violet
-                         {Controls("violet")}</p>
+                                <span> {Controls("violet")}</span></p>
                     </div>
                 </div>
                 <div className={raight}>
