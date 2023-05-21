@@ -67,8 +67,8 @@ const stopy = [
         sklad: [
             {
                 pierwiastek: "Al",
-                min: "4,65",
-                max: "5,24",
+                min: "4,5",
+                max: "5,5",
 
             },
             
