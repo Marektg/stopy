@@ -87,19 +87,19 @@ const stopy = [
         ]
     },
     {
-        indeks: "",
+        indeks: "ZnNi",
         symbol: "045",
         sklad: [
             {
                 pierwiastek: "Ni",
-                min: "",
-                max: "",
+                min: "0,466",
+                max: "0,534",
             },
 
         ]
     },
     {
-        indeks: "",
+        indeks: "ZnAl5Mg05",
         symbol: "042",
         sklad: [
             {
@@ -116,8 +116,25 @@ const stopy = [
         ]
     },
     {
-        indeks: "",
+        indeks: "ZnAl8Mg05",
         symbol: "043",
+        sklad: [
+            {
+                pierwiastek: "Al",
+                min: "7,8",
+                max: "8,2",
+            },
+            {
+                pierwiastek: "Mg",
+                min: "0,48",
+                max: "0,52",
+            },
+
+        ]
+    },
+    {
+        indeks: "ZnAl4Mg3",
+        symbol: "049",
         sklad: [
             {
                 pierwiastek: "Al",
