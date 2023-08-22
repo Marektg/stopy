@@ -21,7 +21,7 @@ function Stop045() {
                 onSubmit={(values) => {
                     let addNi = (masaKoncowa - values.zawartosc) * inNi;
                    
-                    alert(`Dodaj ${addNi} kg niklu. Dolej do ${masaKoncowa} kg w piecu`)
+                    alert(`Dodaj ${addNi.toFixed(2)} kg niklu. Dolej do ${masaKoncowa.toFixed(0) } kg w piecu`)
 
 
 

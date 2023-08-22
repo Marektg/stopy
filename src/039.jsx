@@ -22,7 +22,7 @@ function Stop039() {
                     let addAl = (masaKoncowa - values.zawartosc) * inAl;
                    
                  
-                    alert(`Dodaj ${addAl} kg aluminium. Dolej do ${masaKoncowa} kg w piecu`)
+                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaKoncowa.toFixed(0) } kg w piecu`)
 
 
 

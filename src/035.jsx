@@ -26,7 +26,7 @@ function Stop035() {
                     console.log(values);
                     console.log(addAl);
                     console.log(addMg);
-                    alert(`Dodaj ${addAl} kg aluminium. Dodaj ${addMg} kg magnezu. Dodaj ${addCu} kg miedzi. Dolej do ${masaKoncowa} kg w piecu`)
+                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dodaj ${addMg.toFixed(2)} kg magnezu. Dodaj ${addCu.toFixed(2)} kg miedzi. Dolej do ${masaKoncowa.toFixed(0) } kg w piecu`)
 
 
 

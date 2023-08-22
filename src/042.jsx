@@ -22,7 +22,7 @@ function Stop042() {
                     let addAl = (masaKoncowa - values.zawartosc) * inAl;
                     let addMg = (masaKoncowa - values.zawartosc) * inMg;
 
-                    alert(`Dodaj ${addAl} kg aluminium. Dodaj ${addMg} kg magnezu. Dolej do ${masaKoncowa} kg w piecu`)
+                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dodaj ${addMg.toFixed(2)} kg magnezu. Dolej do ${masaKoncowa.toFixed(0) } kg w piecu`)
 
 
 
