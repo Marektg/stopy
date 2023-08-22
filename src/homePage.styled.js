@@ -38,7 +38,7 @@ text-decoration: none;
   }
   
   @media screen and (min-width: 768px) {
-    width: 185px;
+    width: 250px;
   };
   @media screen and (min-width: 1200px) {
     width: 250px;

@@ -35,7 +35,7 @@ function Stop039() {
                     <Field id="zawartosc" name="zawartosc" placeholder="0" />
 
 
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit">Oblicz</Button>
                 </Form>
             </Formik>
             <StyledLink to="/">Powrót</StyledLink>

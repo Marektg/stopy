@@ -8,6 +8,8 @@ background-color: #ff671f;
   text-align: center;
   padding: 20px;
   height: 100vh;
+  display:flex;
+  flex-direction: column;
   
   `;
 
@@ -32,14 +34,7 @@ text-decoration: none;
     box-shadow: 0px 10px 8px 0px rgba(80, 80, 80, 0.75);
   }
   
-  @media screen and (min-width: 768px) {
-    width: 100px;
-    margin: 10px
-  };
-  @media screen and (min-width: 1200px) {
-    width: 250px;
-    margin: 10px;
-  }
+ 
   
   `;
 export const Wrapper = styled.div`
@@ -53,7 +48,7 @@ display: flex;
 export const Paragraf = styled.p`
 font-size: 2em;
 text-align: center;
-padding: 100px;
+
 `;
 
 export const Label = styled.label`
@@ -61,7 +56,22 @@ font-size: 2em;
 margin: 20px;
 `;
 export const Button = styled.button`
-font-size: 1.5em;
-margin: 20px;
+width: 100px;
+    height: 50px;
+    background-color: #adafad;
+    border: #adafad 1px solid;
+    border-radius: 15px;
+  color: #6f7271;
+  font-size: 1 em;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-left: 20px;
+
+
+
+  &:hover {
+    color: black;
+    box-shadow: 0px 10px 8px 0px rgba(80, 80, 80, 0.75);
+  }
 `;
 

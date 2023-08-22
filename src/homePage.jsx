@@ -8,7 +8,7 @@ const HomePage = props => {
     <Main>
   
       <StyledLink to="/nowy">Nowy stop</StyledLink>
-      <StyledLink to="/korekta">Korekta stopu</StyledLink>
+      {/*<StyledLink to="/korekta">Korekta stopu</StyledLink>*/}
      
     </Main>
   )

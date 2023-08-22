@@ -5,16 +5,15 @@ export const Main = styled.div`
 background-color: #ff671f;
   font-family: serif;
   color: #000000;
-  height: 100vh;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-    
+  flex-direction: row;
+  flex-wrap:wrap;
   justify-content: space-around;
-  align-items: space-around;
+  align-items: center;
   
   @media screen and (min-width: 768px) {  
-    flex-direction: row;
-    align-content: space-around;
+    height: 100vh;
   }
   
   `;
@@ -41,7 +40,7 @@ margin: 50px;
   }
   
   @media screen and (min-width: 768px) {
-    width: 100px;
+    width: 250px;
     margin: 10px
   };
   @media screen and (min-width: 1200px) {
