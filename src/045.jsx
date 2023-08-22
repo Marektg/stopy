@@ -29,15 +29,18 @@ function Stop045() {
 
                 }}
             >
-                <Form>
+                <Form style={{
+                    display: "flex",
+                    flexDirection: "column", justifyContent: "center",
+                }}>
                     <Label htmlFor="zawartosc">Zawartość w piecu</Label>
-                    <Field id="zawartosc" name="zawartosc" placeholder="0" />
+                    <Field id="zawartosc" name="zawartosc" placeholder="0" style={{ width: "50%", height: "30px", margin: "auto" }} />
 
 
-                    <Button type="submit">Oblicz</Button>
+                    <Button type="submit" style={{ margin: "auto", marginTop: "20px" }}>Oblicz</Button>
                 </Form>
             </Formik>
-            <StyledLink to="/">Powrót</StyledLink>
+            <StyledLink to="/nowy">Powrót</StyledLink>
         </Main>
     )
 }
