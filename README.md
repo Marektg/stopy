@@ -1,1 +1,1 @@
-
+Kalkulator wsadu pieca Junker.
