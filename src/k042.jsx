@@ -93,6 +93,8 @@ function Stop042k() {
 
                             
 
+                        } else {
+                            alert(`Stop gotowy do odlania.`)
                         }
 
                     } else {
@@ -166,6 +168,8 @@ function Stop042k() {
 
 
 
+                        } else {
+                            alert(`Stop gotowy do odlania.`)
                         }
                     }
 
