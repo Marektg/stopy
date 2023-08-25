@@ -36,6 +36,8 @@ function Stop045k() {
                             let addNi = zawartosc * 0.005 - zawartosc * stringZawNi * 0.01;
                             alert(`Dodaj ${addNi.toFixed(2)} kg niklu.`)
 
+                        } else {
+                            alert(`Stop gotowy do odlania.`)
                         }
                    
                     } else {
@@ -53,7 +55,9 @@ function Stop045k() {
                         let addNi = zawartosc * 0.005 - zawartosc * zawartoscNi * 0.01;
                         alert (`Dodaj ${addNi.toFixed(2)} kg niklu.`)
 
-                        }
+                    } else {
+                        alert(`Stop gotowy do odlania.`)
+                    }
                     }
                    
                 }}
