@@ -15,6 +15,8 @@ import Stop049 from './049';
 import Stop033k from './k033';
 import Stop042 from './042';
 import Stop043 from './043';
+import Stop045k from './k045';
+import Stop042k from './k042';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -36,9 +38,9 @@ root.render(
         <Route path='/korekta/033' element={<Stop033k />} />
         <Route path='/korekta/035' element={<Korekta />} />
         <Route path='/korekta/039' element={<Korekta />} />
-        <Route path='/korekta/042' element={<Korekta />} />
+        <Route path='/korekta/042' element={<Stop042k />} />
         <Route path='/korekta/043' element={<Korekta />} />
-        <Route path='/korekta/045' element={<Korekta />} />
+        <Route path='/korekta/045' element={<Stop045k />} />
         <Route path='/korekta/048' element={<Korekta />} />
         <Route path='/korekta/049' element={<Korekta />} />
      

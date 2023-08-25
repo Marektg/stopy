@@ -71,7 +71,7 @@ justifyContent: "center",
                    
                 </Form>
             </Formik>
-            <StyledLink to="/">Powrót</StyledLink>
+            <StyledLink to="/korekta">Powrót</StyledLink>
         </Main>
     )
 }
