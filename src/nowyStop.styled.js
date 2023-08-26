@@ -19,7 +19,7 @@ background-color: #ff671f;
   `;
 
 export const StyledLink = styled(NavLink)`
- width: 200px;
+ width: 250px;
     height: 100px;
     background-color: #adafad;
     border: #adafad 1px solid;
@@ -41,11 +41,13 @@ margin: 50px;
   
   @media screen and (min-width: 768px) {
     width: 250px;
-    margin: 10px
+    margin: 10px;
+    align-items: center;
   };
   @media screen and (min-width: 1200px) {
     width: 250px;
     margin: 10px;
+    align-items: center;
   }
   
   `;
