@@ -59,7 +59,7 @@ function Stop033k() {
                                 }
                                 // za mało magnezu
                                 else if (zawartoscMgpoKorekcie < minMg) {
-                                    let dodajMg = zawartoscMgpoKorekcie * masaPoKorekcieAl - zawartoscMgpoKorekcie * sredniaMg;
+                                    let dodajMg = (masaPoKorekcieAl-zawartosc)*sredniaMg
                                     alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
                                     // magnez OK
                                 } else {
@@ -78,7 +78,7 @@ function Stop033k() {
                                 }
                                 // za mało magnezu
                                 else if (zawartoscMgpoKorekcie < minMg) {
-                                    let dodajMg = zawartoscMgpoKorekcie * sredniaMg - zawartoscMgpoKorekcie * masaPoKorekcieAl;
+                                    let dodajMg = (masaPoKorekcieAl - zawartosc) * sredniaMg
                                     alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
                                     // magnez OK
                                 } else {
@@ -193,7 +193,7 @@ function Stop033k() {
                                 }
                                 // za mało magnezu
                                 else if (zawartoscMgpoKorekcie < minMg) {
-                                    let dodajMg = zawartoscMgpoKorekcie * sredniaMg - zawartoscMgpoKorekcie * masaPoKorekcieAl;
+                                    let dodajMg = masaPoKorekcieAl * sredniaMg - zawartoscMgpoKorekcie * masaPoKorekcieAl;
                                     alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
                                     // magnez OK
                                 } else {
