@@ -18,24 +18,24 @@ function Stop044k() {
             <Formik
                 initialValues={{
                     zawartosc: 0,
-                    zawartoscAl: 0,
+                    zawartoscMg: 0,
 
 
                 }}
-                onSubmit={({ zawartosc, zawartoscAl }) => {
-                    if (zawartoscAl.includes(",")) {
-                        let stringZawAl = zawartoscAl.replace(",", ".")
+                onSubmit={({ zawartosc, zawartoscMg }) => {
+                    if (zawartoscMg.includes(",")) {
+                        let stringZawMg = zawartoscMg.replace(",", ".")
 
-                        if (stringZawAl > maxMg) {
-                            let inAl = stringZawAl * 0.01;
+                        if (stringZawMg > maxMg) {
+                            let inAl = stringZawMg * 0.01;
                             let masaPoKorekcie = (zawartosc * inAl) / maxMg;
 
 
 
                             alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
 
-                        } else if (stringZawAl < minMg) {
-                            let addAl = zawartosc * srednieMg - zawartosc * stringZawAl * 0.01;
+                        } else if (stringZawMg < minMg) {
+                            let addAl = zawartosc * srednieMg - zawartosc * stringZawMg * 0.01;
                             alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
 
                         } else {
@@ -45,16 +45,16 @@ function Stop044k() {
                     } else {
 
 
-                        if (zawartoscAl > maxMg) {
-                            let inAl = zawartoscAl * 0.01;
+                        if (zawartoscMg > maxMg) {
+                            let inAl = zawartoscMg * 0.01;
                             let masaPoKorekcie = (zawartosc * inAl) / maxMg;
 
 
 
                             alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
 
-                        } else if (zawartoscAl < minMg) {
-                            let addAl = zawartosc * srednieMg - zawartosc * zawartoscAl * 0.01;
+                        } else if (zawartoscMg < minMg) {
+                            let addAl = zawartosc * srednieMg - zawartosc * zawartoscMg * 0.01;
                             alert(`Dodaj ${addAl.toFixed(2)} kg aluminum.`)
 
                         } else {
@@ -75,8 +75,8 @@ function Stop044k() {
 
                     <Label htmlFor="zawartosc">Zawartość w piecu</Label>
                     <Field id="zawartosc" name="zawartosc" placeholder="0" style={{ width: "50%", height: "30px", margin: "auto" }} />
-                    <Label htmlFor="zawartoscAl">Zawartość aluminium</Label>
-                    <Field id="zawartoscAl" name="zawartoscAl" placeholder="0" style={{ width: "50%", height: "30px", margin: "auto" }} />
+                    <Label htmlFor="zawartoscMg">Zawartość magnezu</Label>
+                    <Field id="zawartoscMg" name="zawartoscMg" placeholder="0" style={{ width: "50%", height: "30px", margin: "auto" }} />
 
 
                     <Button type="submit" style={{ margin: "auto", marginTop: "20px" }}>Oblicz</Button>
