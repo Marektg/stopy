@@ -6,7 +6,12 @@ import { Main, StyledLink, Paragraf, Label, Button } from './stop.styled';
 
 
 function Stop042k() {
-
+    const minAl = 0.0475;
+    const maxAl = 0.0525;
+    const srednieAl = 0.05;
+    const minMg = 0.0045;
+    const maxMg = 0.0055;
+    const sredniaMg = 0.005;
 
 
 
@@ -23,159 +28,285 @@ function Stop042k() {
                 }}
                 onSubmit={({ zawartosc, zawartoscAl, zawartoscMg }) => {
                     if (zawartoscAl.includes(",")) {
-                        let stringZawAl = zawartoscAl.replace(",", ".")
+                        
+                        let poprawionaZawAl = zawartoscAl.replace(",", ".")
+                        let stringZawAl = poprawionaZawAl*0.01
 
-                        if (stringZawAl > 5.254) {
-                            let inAl = stringZawAl * 0.01;
-                            let masaPoKorekcie = (zawartosc * inAl) / 0.052;
-                            if (zawartoscMg.includes(",")) {
-                                let stringZawMg = zawartoscMg.replace(",", ".")
-                                let inMg = zawartosc * stringZawMg * 0.01/masaPoKorekcie;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (masaPoKorekcie * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * inAl;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = masaPoKorekcie * 0.005 - masaPoKorekcie * inMg;
-                                    alert(`Dodaj ${addMg.toFixed(2)} kg magnezu. Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
-                                } else {
-                                    
-                                    alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
-                                }
-                            } else {
-                                let inMg = masaPoKorekcie * zawartoscMg * 0.01;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (masaPoKorekcie * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * inAl;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = masaPoKorekcie * 0.005 - masaPoKorekcie * inMg;
-                                    alert(`Dodaj ${addMg.toFixed(2)} kg magnezu. Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
-                                } else {
-
-                                    alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
-                                }
-                            }
-
-
-
-
-                        } else if (stringZawAl < 4.745) {
-                            let addAl = zawartosc * 0.05 - zawartosc * stringZawAl * 0.01;
-                            if (zawartoscMg.includes(",")) {
-                                let stringZawMg = zawartoscMg.replace(",", ".")
-                                let inMg = zawartosc * stringZawMg * 0.01;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (zawartosc * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * stringZawAl*0.01;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = zawartosc * 0.005 - zawartosc * inMg;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dodaj ${addMg.toFixed(2)} kg magnezu.`)
-                                } else {
-
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
-                                }
-                            } else {
-                                let inMg = zawartosc * zawartoscMg * 0.01;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (zawartosc * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * stringZawAl*0.01;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = zawartosc * 0.005 - zawartosc * inMg;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dodaj ${addMg.toFixed(2)} kg magnezu. `)
-                                } else {
-
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
-                                }
-                            }
-
+                        // za dużo aluminium
+                        
+                        if (stringZawAl > maxAl) {
+                            let inAl = stringZawAl ;
                             
+                            let masaPoKorekcieAl = (zawartosc * inAl) / maxAl;
+                            
+                            if (zawartoscMg.includes(",")) {
+                                
+                                
+                                let poprawionaZawMg = zawartoscMg.replace(",", ".");
+                                let stringZawMg = poprawionaZawMg * 0.01;
 
-                        } else {
-                            alert(`Stop gotowy do odlania.`)
+                                
+                                
+                                // ile jest magnezu po dodaniu cynku aby Al było OK
+                                let zawartoscMgpoKorekcie = stringZawMg * zawartosc / masaPoKorekcieAl;
+                                
+                                
+                                // za dużo magnezu
+                                if (zawartoscMgpoKorekcie > maxMg) {
+                                    let masaPoKorekcieMg = masaPoKorekcieAl * zawartoscMgpoKorekcie  / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - masaPoKorekcieAl) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (zawartoscMgpoKorekcie < minMg) {
+                                    let dodajMg = zawartoscMgpoKorekcie * masaPoKorekcieAl  - zawartoscMgpoKorekcie * sredniaMg;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
+                                    // magnez OK
+                                } else {
+                                    alert(`Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
+                                }
+                            } else {
+                                
+                                
+                                // ile jest magnezu po dodaniu cynku aby Al było OK
+                                let zawartoscMgpoKorekcie = zawartoscMg * zawartosc / masaPoKorekcieAl;
+                                // za dużo magnezu
+                                if (zawartoscMgpoKorekcie > maxMg) {
+                                    let masaPoKorekcieMg = masaPoKorekcieAl * zawartoscMgpoKorekcie / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - masaPoKorekcieAl) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (zawartoscMgpoKorekcie < minMg) {
+                                    let dodajMg = zawartoscMgpoKorekcie * sredniaMg - zawartoscMgpoKorekcie * masaPoKorekcieAl;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
+                                    // magnez OK
+                                } else {
+                                    alert(`Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
+                                }
+                            }
+                            
+                            
+                            // za mało aluminium
+                        } else if (stringZawAl < minAl) {
+                            let addAl = zawartosc * srednieAl - zawartosc * stringZawAl ;
+                            if (zawartoscMg.includes(",")) {
+                                
+                                let poprawionaZawMg = zawartoscMg.replace(",", ".");
+                                let stringZawMg = poprawionaZawMg*0.01
+                                // za dużo magnezu
+                                if (stringZawMg  > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * stringZawMg / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (stringZawMg  < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * stringZawMg;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dodaj ${addAl.toFixed(0)} kg aluminium.`)
+                                    // magnez OK
+                                } else {
+                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
+                                }
+                            } else {
+                                
+                                
+                                // za dużo magnezu
+                                if (zawartoscMg  > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * zawartoscMg / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (zawartoscMg  < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * zawartoscMg;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dodaj ${addAl.toFixed(0)} kg aluminium.`)
+                                    // magnez OK
+                                } else {
+                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
+                                }
+                            }
+                        }
+                        // aluminium OK
+                        else  {
+                            
+                            if (zawartoscMg.includes(",")) {
+                                
+                                let poprawionaZawMg = zawartoscMg.replace(",", ".");
+                                let stringZawMg = poprawionaZawMg*0.01
+                                // za dużo magnezu
+                                if (stringZawMg  > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * stringZawMg  / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (stringZawMg  < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * stringZawMg ;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. `)
+                                    // magnez OK
+                                } else {
+                                    alert(`Stop gotowy do odlania.`)
+                                }
+                            } else {
+                                
+
+                                // za dużo magnezu
+                                if (zawartoscMg  > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * zawartoscMg  / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (zawartoscMg  < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * zawartoscMg ;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu.`)
+                                    // magnez OK
+                                } else {
+                                    alert(`Stop gotowy do odlania.`)
+                                }
+                            }
+                            
                         }
 
                     } else {
-
-
-                        if (zawartoscAl > 5.254) {
-                            let inAl = zawartoscAl * 0.01;
-                            let masaPoKorekcie = (zawartosc * inAl) / 0.052;
+                        
+                        let stringZawAl = zawartoscAl * 0.01;
+                        console.log(stringZawAl);
+                        // za dużo aluminium
+                        if (stringZawAl > maxAl) {
+                            
+                            let inAl = stringZawAl ;
+                            let masaPoKorekcieAl = (zawartosc * inAl) / maxAl;
                             if (zawartoscMg.includes(",")) {
-                                let stringZawMg = zawartoscMg.replace(",", ".")
-                                let inMg = masaPoKorekcie * stringZawMg * 0.01;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (masaPoKorekcie * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * inAl;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = masaPoKorekcie * 0.005 - masaPoKorekcie * inMg;
-                                    alert(`Dodaj ${addMg.toFixed(2)} kg magnezu. Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
+                                
+                                console.log("za dużo Mg");
+                                let poprawionaZawMg = zawartoscMg.replace(",", ".");
+                                let stringZawMg = poprawionaZawMg*0.01
+                                // ile jest magnezu po dodaniu cynku aby Al było OK
+                                let zawartoscMgpoKorekcie = stringZawMg * zawartosc * 0.01 / masaPoKorekcieAl;
+                                // za dużo magnezu
+                                if (zawartoscMgpoKorekcie > maxMg) {
+                                    let masaPoKorekcieMg = masaPoKorekcieAl * zawartoscMgpoKorekcie / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - masaPoKorekcieAl) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (zawartoscMgpoKorekcie < minMg) {
+                                    let dodajMg = zawartoscMgpoKorekcie * sredniaMg - zawartoscMgpoKorekcie * masaPoKorekcieAl;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
+                                    // magnez OK
                                 } else {
-
-                                    alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
+                                    alert(`Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
                                 }
                             } else {
-                                let inMg = masaPoKorekcie * zawartoscMg * 0.01;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (masaPoKorekcie * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * inAl;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = masaPoKorekcie * 0.005 - masaPoKorekcie * inMg;
-                                    alert(`Dodaj ${addMg.toFixed(2)} kg magnezu. Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
-                                } else {
 
-                                    alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
+                                // ile jest magnezu po dodaniu cynku aby Al było OK
+                                let zawartoscMgpoKorekcie = zawartoscMg * zawartosc * 0.01 / masaPoKorekcieAl;
+                                console.log(zawartoscMgpoKorekcie);
+                                // za dużo magnezu
+                                if (zawartoscMgpoKorekcie > maxMg) {
+                                    console.log("za dużo Mg");
+                                    let masaPoKorekcieMg = masaPoKorekcieAl * zawartoscMgpoKorekcie / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - masaPoKorekcieAl) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (zawartoscMgpoKorekcie < minMg) {
+                                    let dodajMg = masaPoKorekcieAl * sredniaMg - zawartoscMgpoKorekcie * masaPoKorekcieAl;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
+                                    // magnez OK
+                                } else {
+                                    alert(`Dolej do ${masaPoKorekcieAl.toFixed(0)} kg w piecu.`)
                                 }
                             }
 
 
-
-
-                        } else if (zawartoscAl < 4.745) {
-                            let addAl = zawartosc * 0.05 - zawartosc * zawartoscAl * 0.01;
+                            // za mało aluminium
+                        } else if (stringZawAl  < minAl) {
+                            let addAl = zawartosc * srednieAl - zawartosc * stringZawAl;
+                            console.log(addAl);
                             if (zawartoscMg.includes(",")) {
-                                let stringZawMg = zawartoscMg.replace(",", ".")
-                                let inMg = zawartosc * stringZawMg * 0.01;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (zawartosc * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * zawartoscAl * 0.01;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = zawartosc * 0.005 - zawartosc * inMg;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dodaj ${addMg.toFixed(2)} kg magnezu.`)
-                                } else {
 
+                                let poprawionaZawMg = zawartoscMg.replace(",", ".");
+                                let stringZawMg = poprawionaZawMg*0.01
+                                // za dużo magnezu
+                                if (stringZawMg  > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * sredniaMg / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (stringZawMg  < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * stringZawMg;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dodaj ${addAl.toFixed(0)} kg aluminium.`)
+                                    // magnez OK
+                                } else {
                                     alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
                                 }
                             } else {
-                                let inMg = zawartosc * zawartoscMg * 0.01;
-                                if (inMg > 0.00554) {
-                                    let masaPoKorekcieMg = (zawartosc * inMg) / 0.00545;
-                                    let addAl = masaPoKorekcieMg * 0.052 - masaPoKorekcieMg * zawartoscAl * 0.01;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
-                                } else if (inMg < 0.00445) {
-                                    let addMg = zawartosc * 0.005 - zawartosc * inMg;
-                                    alert(`Dodaj ${addAl.toFixed(0)} kg aluminium. Dodaj ${addMg.toFixed(2)} kg magnezu. `)
-                                } else {
 
+                                let stringZawMg = zawartoscMg * 0.01
+                                // za dużo magnezu
+                                if (stringZawMg > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * stringZawMg / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (stringZawMg < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * stringZawMg;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. Dodaj ${addAl.toFixed(0)} kg aluminium.`)
+                                    // magnez OK
+                                } else {
                                     alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
                                 }
                             }
-
-
-
-                        } else {
-                            alert(`Stop gotowy do odlania.`)
                         }
+                        // aluminium OK
+                        else {
+                            if (zawartoscMg.includes(",")) {
+                                let poprawionaZawMg = zawartoscMg.replace(",", ".");
+                                let stringZawMg = poprawionaZawMg*0.01
+                                // za dużo magnezu
+                                if (stringZawMg  > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * sredniaMg / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (stringZawMg  < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * stringZawMg;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. `)
+                                    // magnez OK
+                                } else {
+                                    alert(`Stop gotowy do odlania.`)
+                                }
+                            } else {
+                           
+                                let stringZawMg = zawartoscMg * 0.01
+                                // za dużo magnezu
+                                if (stringZawMg > maxMg) {
+                                    let masaPoKorekcieMg = zawartosc * stringZawMg / maxMg;
+                                    let dodajAl = (masaPoKorekcieMg - zawartosc) * srednieAl;
+                                    alert(`Dodaj ${dodajAl.toFixed(0)} kg aluminium. Dolej do ${masaPoKorekcieMg.toFixed(0)} kg w piecu.`)
+                                }
+                                // za mało magnezu
+                                else if (stringZawMg < minMg) {
+                                    let dodajMg = zawartosc * sredniaMg - zawartosc * stringZawMg;
+                                    alert(`Dodaj ${dodajMg.toFixed(1)} kg magnezu. `)
+                                    // magnez OK
+                                } else {
+                                    alert(`Stop gotowy do odlania.`)
+                                }
+                            }
+
+                        }
+
                     }
+                }
 
-                }}
-
-            >
+                } >
                 <Form
                     style={{
                         display: "flex",

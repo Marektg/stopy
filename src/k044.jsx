@@ -5,16 +5,16 @@ import { Main, StyledLink, Paragraf, Label, Button } from './stop.styled';
 
 
 
-function Stop039k() {
-    const minAl = 0.045;
-    const maxAl = 0.055;
-    const srednieAl = 0.05;
+function Stop044k() {
+    const minMg = 0.0275;
+    const maxMg = 0.0324;
+    const srednieMg = 0.03;
 
 
 
     return (
         <Main>
-            <Paragraf>Korygujesz stop ZnAl5</Paragraf>
+            <Paragraf>Korygujesz stop ZnMg3</Paragraf>
             <Formik
                 initialValues={{
                     zawartosc: 0,
@@ -26,16 +26,16 @@ function Stop039k() {
                     if (zawartoscAl.includes(",")) {
                         let stringZawAl = zawartoscAl.replace(",", ".")
 
-                        if (stringZawAl > maxAl) {
+                        if (stringZawAl > maxMg) {
                             let inAl = stringZawAl * 0.01;
-                            let masaPoKorekcie = (zawartosc * inAl) / maxAl;
+                            let masaPoKorekcie = (zawartosc * inAl) / maxMg;
 
 
 
                             alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
 
-                        } else if (stringZawAl < minAl) {
-                            let addAl = zawartosc * srednieAl - zawartosc * stringZawAl * 0.01;
+                        } else if (stringZawAl < minMg) {
+                            let addAl = zawartosc * srednieMg - zawartosc * stringZawAl * 0.01;
                             alert(`Dodaj ${addAl.toFixed(0)} kg aluminium.`)
 
                         } else {
@@ -45,16 +45,16 @@ function Stop039k() {
                     } else {
 
 
-                        if (zawartoscAl > maxAl) {
+                        if (zawartoscAl > maxMg) {
                             let inAl = zawartoscAl * 0.01;
-                            let masaPoKorekcie = (zawartosc * inAl) / maxAl;
+                            let masaPoKorekcie = (zawartosc * inAl) / maxMg;
 
 
 
                             alert(`Dolej do ${masaPoKorekcie.toFixed(0)} kg w piecu.`)
 
-                        } else if (zawartoscAl < minAl) {
-                            let addAl = zawartosc * srednieAl - zawartosc * zawartoscAl * 0.01;
+                        } else if (zawartoscAl < minMg) {
+                            let addAl = zawartosc * srednieMg - zawartosc * zawartoscAl * 0.01;
                             alert(`Dodaj ${addAl.toFixed(2)} kg aluminum.`)
 
                         } else {
@@ -88,4 +88,4 @@ function Stop039k() {
     )
 }
 
-export default Stop039k
+export default Stop044k

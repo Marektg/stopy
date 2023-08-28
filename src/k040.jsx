@@ -5,16 +5,16 @@ import { Main, StyledLink, Paragraf, Label, Button } from './stop.styled';
 
 
 
-function Stop039k() {
-    const minAl = 0.045;
-    const maxAl = 0.055;
-    const srednieAl = 0.05;
+function Stop040k() {
+    const minAl = 0.09;
+    const maxAl = 0.11;
+    const srednieAl = 0.1;
 
 
 
     return (
         <Main>
-            <Paragraf>Korygujesz stop ZnAl5</Paragraf>
+            <Paragraf>Korygujesz stop ZnAl10</Paragraf>
             <Formik
                 initialValues={{
                     zawartosc: 0,
@@ -88,4 +88,4 @@ function Stop039k() {
     )
 }
 
-export default Stop039k
+export default Stop040k
