@@ -8,7 +8,7 @@ function Stop049() {
 
     let inAl = 0.04;
     let inMg = 0.03;
-    let masaKoncowa = 4600;
+    let masaKoncowa = 4300;
 
     return (
         <Main>
