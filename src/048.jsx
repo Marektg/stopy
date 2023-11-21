@@ -8,7 +8,7 @@ function Stop048() {
 
     let inAl = 0.019;
    
-    let masaKoncowa = 5000;
+    let masaKoncowa = 5200;
 
     return (
         <Main>
