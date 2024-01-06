@@ -8,7 +8,7 @@ function Stop045() {
 
     let inNi = 0.005;
    
-    let masaKoncowa = 5000;
+    let masaKoncowa = 5100;
 
     return (
         <Main>
