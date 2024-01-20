@@ -6,9 +6,9 @@ import { Main, StyledLink, Paragraf, Label, Button } from './stop.styled';
 
 function Stop050() {
 
-    let inAl = 0.05;
+    let inAl = 0.06;
     let inMg = 0.005;
-    let masaKoncowa = 4600;
+    let masaKoncowa = 4500;
 
     return (
         <Main>
