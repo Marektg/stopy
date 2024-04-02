@@ -6,13 +6,13 @@ import { Main, StyledLink, Paragraf, Label, Button } from './stop.styled';
 
 function Stop048() {
 
-    let inAl = 0.019;
+    let inAl = 0.0185;
    
     let masaKoncowa = 5200;
 
     return (
         <Main>
-            <Paragraf>Przygotowujesz stop ZA3</Paragraf>
+            <Paragraf>Przygotowujesz stop ZA2</Paragraf>
             <Formik
                 initialValues={{
                     zawartosc: '',
